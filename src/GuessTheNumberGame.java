@@ -103,6 +103,10 @@ public class GuessTheNumberGame {
             }else{
                 System.out.println("\nCongratulations! You guessed the number in " + attempts + " attempts");
             }
+
+            if (attempts == intetosMaximos) {
+                System.out.println("you ran out of attempts");
+            }
         }
     }
 }
