@@ -10,31 +10,25 @@ public class GuessTheNumberGame {
     public static void main(String[] args) throws Exception {
         //we instantiate the classes of the libraries to use
         GuessTheNumberGame intancia = new GuessTheNumberGame();
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+            //We declare and assign variables
+            int game;
 
-        //We declare and assign variables
-        int game;
+            //We start the game with the welcome message and the game options
+            System.out.println("¡welcome to the guess the number game!");
+            System.out.println("Select the type of game you want to play below");
+            System.out.println("1. Default game: random number from 1 to 100 with unlimited attempts.");
+            System.out.println("2. Custom Game: Enter the range of numbers you want to guess from and choose the intets.");
+            game = scanner.nextInt();
 
-        //We start the game with the welcome message and the game options
-        System.out.println("¡welcome to the guess the number game!");
-        System.out.println("Select the type of game you want to play below");
-        System.out.println("1. Default game: random number from 1 to 100 with unlimited attempts.");
-        System.out.println("2. Custom Game: Enter the range of numbers you want to guess from and choose the intets.");
-        game = scanner.nextInt();
-
-        //we use a switch to determine which game the user wants to play
-        switch (game) {
-            case 1:
-                intancia.defaultGame();
-                break;
-            case 2:
-                intancia.CustomGame();
-                break;
-            default:
-                System.out.println("Game type not found");
-                break;
+            //we use a switch to determine which game the user wants to play
+            switch (game) {
+                case 1 -> intancia.defaultGame();
+                case 2 -> intancia.CustomGame();
+                default -> System.out.println("Game type not found");
+            }
+            scanner.close();
         }
-        scanner.close();
     }
 
     public void defaultGame(){
